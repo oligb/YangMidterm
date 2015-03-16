@@ -29,7 +29,11 @@ public class DamageZone : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Renderer>().material.SetFloat("_Outline", outlineWidth);
+
+		if(transform.position.y>180 || transform.localScale.x>=maxSize){
+			Destroy(gameObject);
+		}
+		//GetComponent<Renderer>().material.SetFloat("_Outline", outlineWidth);
 		transform.localScale+= new Vector3(growSpeed,growSpeed,growSpeed);
 	
 	}

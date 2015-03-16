@@ -11,6 +11,11 @@ public class ProjectileAttack : MonoBehaviour {
 	public GameObject camera;
 
 	void Start () {
+		player=GameObject.Find ("Player").transform;
+
+		target=player.position;
+		target.x+=Random.Range (-10f,10f);
+		target.z+=Random.Range (-20f,20f);
 		target.y-=5f;
 	}
 
@@ -19,22 +24,27 @@ public class ProjectileAttack : MonoBehaviour {
 	void Update () {
 
 		//   SET THE TARGET HERE FOR HOMING SHOTS!
-		//	target=player.transform.position;
-		Vector3 shotVector = target-transform.position;
-		Vector3 shotDirection = shotVector.normalized*1.1f;
 
-		//LERP IT!
-		//if(
+		Vector3 shotVector = target-transform.position;
+		Vector3 shotDirection = shotVector.normalized;
+
 		transform.Translate(shotDirection*shotSpeed);
 	
+		if(Vector3.Distance(transform.position,target)<=20f){
+			KillProjectile();
+		}
 	}
 
 	void OnCollisionEnter(Collision col){
 
+		KillProjectile();
+
+	}
+
+	void KillProjectile(){
 		Debug.Log("collided");
 		Instantiate(damageZone,transform.position,Quaternion.identity);
-		camera.GetComponent<CamShake>().TriggerShake();
-			Destroy(gameObject);
 
+		Destroy(gameObject);
 	}
 }

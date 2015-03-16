@@ -5,6 +5,8 @@ public class DebrisShrinker : MonoBehaviour {
 
 	// Use this for initialization
 	public float shrinkSpeed=5f;
+
+
 	Rigidbody rbody;
 	void Start () {
 		rbody=GetComponent<Rigidbody>();
@@ -17,7 +19,6 @@ public class DebrisShrinker : MonoBehaviour {
 		transform.localScale-= new Vector3 (1f,1f,1f)*shrinkSpeed;
 		if(transform.localScale.x<=0f){
 			Destroy(gameObject);
-	
 		}
 	}
 	void OnCollisionEnter(Collision col){

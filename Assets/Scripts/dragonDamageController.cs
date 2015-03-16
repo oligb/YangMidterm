@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CamShake : MonoBehaviour {
+public class dragonDamageController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,9 +11,5 @@ public class CamShake : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-
-	}
-
-	public void TriggerShake(){
 	}
 }
